@@ -56,6 +56,7 @@ def dashboard():
                            roadmap_stats=roadmap_stats)
 
 from app.forms.announcement_form import AnnouncementForm
+from app.forms.admin_form import ChangePasswordForm
 
 @admin_bp.route('/announcements')
 @login_required
@@ -160,3 +161,21 @@ def delete_roadmap(id):
     RoadmapService.delete_roadmap_item(id)
     flash('Roadmap item deleted successfully')
     return redirect(url_for('admin_bp.roadmaps'))
+
+@admin_bp.route('/change-password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        try:
+            AdminService.change_password(
+                admin_id=current_user.id,
+                current_password=form.current_password.data,
+                new_password=form.new_password.data
+            )
+            flash('Password changed successfully')
+            return redirect(url_for('admin_bp.dashboard'))
+        except ValueError as e:
+            flash(str(e))
+    
+    return render_template('admin/change_password.html', form=form)
