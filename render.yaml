@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: inflare-compute-web
+    env: python
+    region: frankfurt  # 或选择 oregon / singapore，根据目标用户群体决定
+    plan: free         # 免费套餐 (注意: 免费实例不支持持久化硬盘，每次重新部署 SQLite 数据会被重置，若需保留数据请升级为 Starter 套餐并添加 disk 配置)
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn wsgi:app"  # DB已包含在代码库中，直接启动
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3  # 与开发环境保持一致
+      - key: FLASK_CONFIG
+        value: production
+      - key: SECRET_KEY
+        generateValue: true

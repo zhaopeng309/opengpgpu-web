@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel - OpenGPGPU{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>OpenGPGPU</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{{ url_for('admin_bp.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('admin_bp.announcements') }}">Announcements</a></li>
+                    <li><a href="{{ url_for('admin_bp.roadmaps') }}">Roadmaps</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="{{ url_for('admin_bp.logout') }}" class="btn-logout">Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h3>{% block header %}Dashboard{% endblock %}</h3>
+            </header>
+            
+            <section class="admin-content">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flash-messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}
+                {% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

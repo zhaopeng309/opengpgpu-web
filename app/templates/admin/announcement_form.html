@@ -1,0 +1,35 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ title }} - Admin Panel{% endblock %}
+{% block header %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="form-container" style="max-width: 600px; background-color: #1e1e1e; padding: 20px; border-radius: 8px;">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            {{ form.title.label(style="display: block; margin-bottom: 5px;") }}
+            {{ form.title(style="width: 100%; padding: 8px; background-color: #2d2d2d; border: 1px solid #333; color: white; border-radius: 4px;") }}
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            {{ form.content.label(style="display: block; margin-bottom: 5px;") }}
+            {{ form.content(style="width: 100%; padding: 8px; background-color: #2d2d2d; border: 1px solid #333; color: white; border-radius: 4px; min-height: 150px;") }}
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 15px;">
+            {{ form.priority.label(style="display: block; margin-bottom: 5px;") }}
+            {{ form.priority(style="width: 100%; padding: 8px; background-color: #2d2d2d; border: 1px solid #333; color: white; border-radius: 4px;") }}
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 20px;">
+            {{ form.is_active() }} {{ form.is_active.label(style="display: inline-block; margin-left: 5px;") }}
+        </div>
+        
+        <div class="form-actions">
+            {{ form.submit(class_="btn", style="background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;") }}
+            <a href="{{ url_for('admin_bp.announcements') }}" style="margin-left: 10px; color: #aaa; text-decoration: none;">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

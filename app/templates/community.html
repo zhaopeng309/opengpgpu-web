@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}社区 - OpenGPGPU{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>加入 OpenGPGPU 社区</h1>
+    <p class="subtitle">连接全球开发者，共同推进透明算力革命</p>
+</section>
+
+<section class="community-entries">
+    <div class="community-grid">
+        <div class="entry-card card">
+            <div class="icon-large">🐙</div>
+            <h3>GitHub 开源社区</h3>
+            <p>代码托管、Issue 提交、PR 协作。欢迎所有形式的贡献！</p>
+            <a href="https://github.com/zhaopeng309" target="_blank" class="btn btn-outline">访问 GitHub 仓库</a>
+        </div>
+        
+        <div class="entry-card card">
+            <div class="icon-large">💬</div>
+            <h3>微信公众号</h3>
+            <p>架构深度解析、付费专栏、独家答疑。获取一手的架构师洞见。</p>
+            <img src="{{ url_for('static', filename='img/qr-wechat.png') }}" alt="公众号二维码" class="qr-code" style="width: 150px; height: 150px; margin: 1rem 0; border-radius: 8px;">
+            <a href="#" class="btn btn-primary">关注公众号</a>
+        </div>
+        
+        <div class="entry-card card">
+            <div class="icon-large">🤖</div>
+            <h3>AI 驱动设计交流</h3>
+            <p>探讨 AI Agent 自动化设计思路、大模型调用技巧。</p>
+            <a href="#" class="btn btn-outline">加入交流群</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

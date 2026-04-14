@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}OpenGPGPU - 打破算力黑盒{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="Inflare-Compute Logo" class="nav-logo">
+                    观心算力 · Inflare-Compute
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/roadmap">Roadmap</a>
+                <a href="/docs">Docs</a>
+                <a href="/community">Community</a>
+            </div>
+            <div class="nav-actions">
+                <a href="https://github.com/" target="_blank" class="btn-github">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>BSD 3-Clause License</p>
+            <p class="slogan">一人公司 · 暴力美学 · 打破算力黑盒</p>
+            <div class="footer-links">
+                <a href="/admin/login">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

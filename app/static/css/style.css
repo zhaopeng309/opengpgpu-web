@@ -1,0 +1,347 @@
+/* 极致暴力美学 - 全局变量 */
+:root {
+    --color-bg: #0a0a0f;
+    --color-surface: #1a1a1f;
+    --color-primary: #0077ff;
+    --color-primary-hover: #0055cc;
+    --color-text: #ffffff;
+    --color-text-secondary: #aaaaaa;
+    --color-success: #00cc88;
+    --color-warning: #ffaa00;
+    --color-muted: #666666;
+    --border-color: #333333;
+    --border-radius: 8px;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    --font-sans: 'Noto Sans SC', -apple-system, sans-serif;
+}
+
+/* 基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: rgba(26, 26, 31, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.nav-links a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* 主体内容 */
+.main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-github {
+    background: #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* 卡片 */
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--color-primary);
+}
+
+/* 首页区 */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 3rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero .subtitle {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.hero .actions {
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.announcements-section {
+    margin-bottom: 4rem;
+}
+
+.announcement-item {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.announcement-item:last-child {
+    border-bottom: none;
+}
+
+.ann-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.ann-title {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+.ann-date {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Roadmap 区 */
+.page-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.roadmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.feature-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.feature-item {
+    padding: 1rem;
+    border-left: 4px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.02);
+    margin-bottom: 1rem;
+}
+
+.feature-item.status-completed { border-left-color: var(--color-success); }
+.feature-item.status-in_progress { border-left-color: var(--color-warning); }
+.feature-item.status-pending { border-left-color: var(--color-muted); }
+
+.feature-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+/* 社区与文档区 */
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.entry-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-large {
+    font-size: 3rem;
+}
+
+.docs-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+}
+
+.docs-sidebar nav ul {
+    list-style: none;
+    position: sticky;
+    top: 100px;
+}
+
+.docs-sidebar nav a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+}
+
+.docs-sidebar nav a:hover {
+    color: var(--color-primary);
+}
+
+.doc-article {
+    margin-bottom: 2rem;
+}
+
+.doc-article h2 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+/* 页脚 */
+.footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    margin-top: auto;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer .slogan {
+    font-family: var(--font-mono);
+    color: var(--color-muted);
+}
+
+.footer-links a {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.nav-logo {
+    height: 32px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 4px; /* Slight rounding to make it look smooth */
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+}

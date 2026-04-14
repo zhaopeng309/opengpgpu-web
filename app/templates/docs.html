@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}文档中心 - OpenGPGPU{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>文档中心 (Docs)</h1>
+    <p class="subtitle">探索 OpenGPGPU 的架构细节和技术指南</p>
+</section>
+
+<div class="docs-container">
+    <aside class="docs-sidebar">
+        <nav>
+            <ul class="docs-nav">
+                <li><a href="#overview">架构总览</a></li>
+                <li><a href="#chisel-tlm">Chisel/TLM 基础</a></li>
+                <li><a href="#cycle-accurate">Cycle 精确模型设计</a></li>
+                <li><a href="#dev-env">开发环境搭建</a></li>
+                <li><a href="#contributing">贡献指南</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <main class="docs-content">
+        <article id="overview" class="doc-article card">
+            <h2>架构总览</h2>
+            <p>OpenGPGPU 是一个基于 Chisel 构建的 Cycle-accurate 事务级模型 (TLM) 的通用 GPU 架构实现...</p>
+            <p>(文档内容建设中...)</p>
+        </article>
+        
+        <article id="chisel-tlm" class="doc-article card">
+            <h2>Chisel/TLM 基础</h2>
+            <p>了解如何使用硬件构造语言 Chisel 以及 TLM 接口标准进行模块化设计。</p>
+            <p>(文档内容建设中...)</p>
+        </article>
+    </main>
+</div>
+{% endblock %}

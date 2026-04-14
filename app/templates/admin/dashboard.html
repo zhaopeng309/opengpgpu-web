@@ -1,0 +1,34 @@
+{% extends "admin/base.html" %}
+{% block title %}Dashboard - Admin Panel{% endblock %}
+{% block header %}Dashboard Overview{% endblock %}
+
+{% block content %}
+<div class="dashboard-cards">
+    <div class="card">
+        <h4>Total Announcements</h4>
+        <div class="card-value">{{ total_announcements }}</div>
+    </div>
+    <div class="card">
+        <h4>Total Roadmaps</h4>
+        <div class="card-value">{{ total_roadmaps }}</div>
+    </div>
+</div>
+
+<h3 class="section-title">Roadmap Progress by Stage</h3>
+<div class="dashboard-cards">
+    {% for stage, stat in roadmap_stats.items() %}
+    <div class="card">
+        <h4>{{ stage|capitalize }}</h4>
+        <div class="progress-info">
+            <span>{{ stat.completed }} / {{ stat.total }} Completed</span>
+            <span class="progress-percent">{{ stat.progress }}%</span>
+        </div>
+        <div class="progress-bar-bg">
+            <div class="progress-bar-fill" style="width: {{ stat.progress }}%;"></div>
+        </div>
+    </div>
+    {% else %}
+    <p>No roadmaps data available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

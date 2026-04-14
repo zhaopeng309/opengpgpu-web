@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Roadmap - OpenGPGPU{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>开发路线图 (Roadmap)</h1>
+    <p class="subtitle">项目的长远规划与当前进度实时更新</p>
+</section>
+
+<section class="roadmap-section">
+    <div class="status-legend">
+        <span class="legend-item status-completed">✅ 已完成</span>
+        <span class="legend-item status-in_progress">🔄 进行中</span>
+        <span class="legend-item status-pending">⏳ 待处理</span>
+    </div>
+
+    <div class="roadmap-container">
+        {% if roadmap_data %}
+            {% for stage, items in roadmap_data.items() %}
+            <div class="roadmap-stage card">
+                <h2 class="stage-title">阶段: {{ stage }}</h2>
+                <ul class="feature-list">
+                    {% for item in items %}
+                    <li class="feature-item status-{{ item.status }}">
+                        <div class="feature-header">
+                            <h3 class="feature-title">{{ item.title }}</h3>
+                            <span class="feature-badge">{{ item.status }}</span>
+                        </div>
+                        {% if item.description %}
+                        <p class="feature-desc">{{ item.description }}</p>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-msg">路线图规划中，敬请期待...</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

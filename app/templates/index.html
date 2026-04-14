@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 英雄区域 -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>打破算力黑盒，让架构回归真理</h1>
+        <p class="subtitle">Cycle-accurate TLM model in Chisel · 观心算力 (Inflare-Compute)</p>
+        <div class="actions">
+            <a href="/roadmap" class="btn btn-primary">查看 Roadmap</a>
+            <a href="/community" class="btn btn-outline">加入社区</a>
+        </div>
+    </div>
+</section>
+
+<!-- 核心价值 -->
+<section class="values-section">
+    <div class="values-grid">
+        <div class="card value-card">
+            <h3>Cycle精确TLM</h3>
+            <p>基于事务级建模，实现周期级别的精确硬件仿真。</p>
+        </div>
+        <div class="card value-card">
+            <h3>AI驱动自动化</h3>
+            <p>深度融合 AI Agent 工具链，实现代码与测试的自动化生成。</p>
+        </div>
+        <div class="card value-card">
+            <h3>极致透明开源</h3>
+            <p>从架构设计到代码实现，100% 毫无保留向社区开放。</p>
+        </div>
+    </div>
+</section>
+
+<!-- 最新动态 -->
+<section class="announcements-section">
+    <h2>最新动态</h2>
+    <div class="announcement-list">
+        {% if announcements %}
+            {% for ann in announcements %}
+            <div class="announcement-item {% if ann.priority == 1 %}important{% elif ann.priority == 2 %}urgent{% endif %}">
+                <div class="ann-header">
+                    <h3 class="ann-title">{{ ann.title }}</h3>
+                    <span class="ann-date">{{ ann.created_at.strftime('%Y-%m-%d') }}</span>
+                </div>
+                <div class="ann-content">
+                    <p>{{ ann.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty-msg">暂无最新动态</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- 商业转化 -->
+<section class="conversion-section">
+    <div class="conversion-content card">
+        <h2>架构认知付费专栏</h2>
+        <p>开源代码免费，架构认知付费。加入我们的专属专栏，获取深度的架构剖析和开发内幕。</p>
+        <a href="/community" class="btn btn-primary">了解详情</a>
+    </div>
+</section>
+{% endblock %}
