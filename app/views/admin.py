@@ -72,7 +72,7 @@ def new_announcement():
         AnnouncementService.create_announcement(
             title=form.title.data,
             content=form.content.data,
-            priority=form.priority.data
+            priority=form.priority.data or 0
         )
         flash('Announcement created successfully')
         return redirect(url_for('admin_bp.announcements'))
@@ -93,7 +93,7 @@ def edit_announcement(id):
             id,
             title=form.title.data,
             content=form.content.data,
-            priority=form.priority.data,
+            priority=form.priority.data or 0,
             is_active=form.is_active.data
         )
         flash('Announcement updated successfully')
@@ -126,7 +126,7 @@ def new_roadmap():
             stage=form.stage.data,
             status=form.status.data,
             description=form.description.data,
-            order=form.order.data
+            order=form.order.data or 0
         )
         flash('Roadmap item created successfully')
         return redirect(url_for('admin_bp.roadmaps'))
@@ -149,7 +149,7 @@ def edit_roadmap(id):
             stage=form.stage.data,
             status=form.status.data,
             description=form.description.data,
-            order=form.order.data
+            order=form.order.data or 0
         )
         flash('Roadmap item updated successfully')
         return redirect(url_for('admin_bp.roadmaps'))
