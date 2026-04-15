@@ -266,37 +266,121 @@ body {
     font-size: 3rem;
 }
 
-.docs-container {
+/* 新的文档中心布局 */
+.docs-layout {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 250px 1fr 200px;
     gap: 2rem;
+    align-items: start;
 }
 
-.docs-sidebar nav ul {
-    list-style: none;
+.docs-sidebar-left, .docs-sidebar-right {
     position: sticky;
-    top: 100px;
+    top: 80px;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
 }
 
-.docs-sidebar nav a {
+.file-tree-nav ul, .toc-wrapper ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.file-tree-nav > ul, .toc-wrapper > ul {
+    padding-left: 0;
+}
+
+.file-tree-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.file-tree-nav a, .toc-wrapper a {
     color: var(--color-text-secondary);
     text-decoration: none;
     display: block;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
+    transition: color 0.2s;
 }
 
-.docs-sidebar nav a:hover {
+.file-tree-nav a:hover, .toc-wrapper a:hover {
     color: var(--color-primary);
 }
 
-.doc-article {
-    margin-bottom: 2rem;
+.file-tree-nav a.active {
+    color: var(--color-primary);
+    font-weight: bold;
 }
 
-.doc-article h2 {
-    margin-bottom: 1rem;
+.folder-name {
+    font-weight: bold;
+    color: var(--color-text);
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.docs-content-main {
+    min-width: 0; /* 防止内容撑破 grid */
+}
+
+/* Markdown 内容样式 */
+.markdown-body {
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
     color: var(--color-primary);
 }
+
+.markdown-body h1 { font-size: 2em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid var(--border-color); padding-bottom: 0.3em; }
+
+.markdown-body p { margin-bottom: 1em; }
+
+.markdown-body code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+}
+
+.markdown-body pre {
+    background-color: #1e1e1e;
+    padding: 1em;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+.markdown-body pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+.markdown-body a { color: var(--color-primary); text-decoration: none; }
+.markdown-body a:hover { text-decoration: underline; }
+
+.markdown-body ul, .markdown-body ol { margin-bottom: 1em; padding-left: 2em; }
+
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+.markdown-body table th, .markdown-body table td {
+    border: 1px solid var(--border-color);
+    padding: 0.5em;
+}
+
+.markdown-body table th { background-color: rgba(255, 255, 255, 0.05); }
 
 /* 页脚 */
 .footer {

@@ -4,35 +4,63 @@
 
 {% block content %}
 <section class="page-header">
-    <h1>文档中心 (Docs)</h1>
-    <p class="subtitle">探索 OpenGPGPU 的架构细节和技术指南</p>
+    <h1>文档中心</h1>
+    <p class="subtitle">探索 OpenGPGPU 的技术细节和指南</p>
 </section>
 
-<div class="docs-container">
-    <aside class="docs-sidebar">
-        <nav>
-            <ul class="docs-nav">
-                <li><a href="#overview">架构总览</a></li>
-                <li><a href="#chisel-tlm">Chisel/TLM 基础</a></li>
-                <li><a href="#cycle-accurate">Cycle 精确模型设计</a></li>
-                <li><a href="#dev-env">开发环境搭建</a></li>
-                <li><a href="#contributing">贡献指南</a></li>
+<div class="docs-layout container">
+    <aside class="docs-sidebar-left">
+        <nav class="file-tree-nav">
+            <h3>文档目录</h3>
+            {% macro render_tree(tree, current_path) %}
+            <ul>
+                {% for item in tree %}
+                    {% if item.type == 'dir' %}
+                        <li class="folder">
+                            <span class="folder-name">{{ item.name }}</span>
+                            {{ render_tree(item.children, current_path) }}
+                        </li>
+                    {% elif item.type == 'file' %}
+                        <li>
+                            <a href="{{ url_for('frontend.docs', filepath=item.path) }}" class="{% if item.path == current_path %}active{% endif %}">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
+            {% endmacro %}
+            
+            {{ render_tree(file_tree, current_path) }}
         </nav>
     </aside>
     
-    <main class="docs-content">
-        <article id="overview" class="doc-article card">
-            <h2>架构总览</h2>
-            <p>OpenGPGPU 是一个基于 Chisel 构建的 Cycle-accurate 事务级模型 (TLM) 的通用 GPU 架构实现...</p>
-            <p>(文档内容建设中...)</p>
-        </article>
-        
-        <article id="chisel-tlm" class="doc-article card">
-            <h2>Chisel/TLM 基础</h2>
-            <p>了解如何使用硬件构造语言 Chisel 以及 TLM 接口标准进行模块化设计。</p>
-            <p>(文档内容建设中...)</p>
+    <main class="docs-content-main card">
+        <article class="markdown-body">
+            {{ html_content|safe }}
         </article>
     </main>
+
+    <aside class="docs-sidebar-right">
+        <div class="toc-wrapper">
+            <h3>本页内容</h3>
+            {{ toc_html|safe }}
+        </div>
+    </aside>
 </div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: false, theme: 'default' });
+  
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 渲染后端直接生成的 .mermaid 元素
+    const mermaidNodes = document.querySelectorAll('.mermaid');
+    if (mermaidNodes.length > 0) {
+        await mermaid.run({
+            nodes: mermaidNodes
+        });
+    }
+  });
+</script>
 {% endblock %}
