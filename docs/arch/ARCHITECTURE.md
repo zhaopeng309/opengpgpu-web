@@ -2,7 +2,7 @@
 
 ## 1. 概述
 
-OpenGPGPU Chisel model (简称CModel) 是一个基于 Chisel 的 GPGPU 仿真框架，旨在准确模拟现代 GPGPU 的完整架构和工作原理。本文档综合了  OpenGPGPU 的总体设计思想、模块划分、数据流、工作机制以及各类可视化架构图，为 OpenGPGPU 架构研究、算法开发和性能优化提供全面、结构清晰的参考。
+OpenGPGPU Chisel Arch-model (简称AModel) 是一个基于 Chisel 的 GPGPU 仿真框架，旨在准确模拟现代 GPGPU 的完整架构和工作原理。本文档综合了  OpenGPGPU 的总体设计思想、模块划分、数据流、工作机制以及各类可视化架构图，为 OpenGPGPU 架构研究、算法开发和性能优化提供全面、结构清晰的参考。
 
 ### 1.1 核心设计理念
 
@@ -472,7 +472,3 @@ graph LR
 CModel OpenGPGPU 架构在设计上高度注重**层次分明、逻辑严谨与功能模块化**。统一的综合文档呈现了从总体集群结构到细粒度的 SP 流水线，从指令与访存层面的控制机制到系统级的热能监控框架全貌。这不仅为开发者提供了深入理解 GPGPU 内部协同的抓手，也为日后架构创新与扩展留足了灵活空间。
 
 ---
-
-*文档版本: 1.0 (综合版)*  
-*最后更新: 2026-04-08*  
-*核心参考路径: `/home/designer/public/OpenGPGPU/Arch_Model/`*
