@@ -6,3 +6,9 @@ __pycache__/
 flask.log
 plan/
 tests/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+instance/
