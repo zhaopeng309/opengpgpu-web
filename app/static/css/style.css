@@ -417,6 +417,22 @@ body {
     color: var(--color-primary);
 }
 
+.contact-email {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-email a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-email a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
 .nav-logo {
     height: 32px;
     width: auto;
@@ -428,4 +444,67 @@ body {
 .logo a {
     display: flex;
     align-items: center;
+}
+
+/* 二维码放大模态框 */
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.qr-modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: qrZoomIn 0.25s ease-out;
+}
+
+.qr-modal-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+}
+
+.qr-modal-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.qr-modal-close:hover {
+    opacity: 1;
+}
+
+@keyframes qrZoomIn {
+    from {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }

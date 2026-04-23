@@ -21,16 +21,63 @@
             <div class="icon-large">💬</div>
             <h3>微信公众号</h3>
             <p>架构深度解析、付费专栏、独家答疑。获取一手的架构师洞见。</p>
-            <img src="{{ url_for('static', filename='img/qr-wechat.png') }}" alt="公众号二维码" class="qr-code" style="width: 150px; height: 150px; margin: 1rem 0; border-radius: 8px;">
-            <a href="#" class="btn btn-primary">关注公众号</a>
+            <img src="{{ url_for('static', filename='img/qrcode-office.jpg') }}" alt="公众号二维码" class="qr-code" data-qr-src="{{ url_for('static', filename='img/qrcode-office.jpg') }}" onclick="openQrModal(this.getAttribute('data-qr-src'), '公众号二维码')" style="width: 150px; height: 150px; margin: 1rem 0; border-radius: 8px; cursor: pointer;">
+            <a href="javascript:void(0)" class="btn btn-primary" data-qr-src="{{ url_for('static', filename='img/qrcode-office.jpg') }}" onclick="openQrModal(this.getAttribute('data-qr-src'), '公众号二维码')">关注公众号</a>
         </div>
         
         <div class="entry-card card">
             <div class="icon-large">🤖</div>
-            <h3>AI 驱动设计交流</h3>
-            <p>探讨 AI Agent 自动化设计思路、大模型调用技巧。</p>
-            <a href="#" class="btn btn-outline">加入交流群</a>
+            <h3>OpenGPGPU 架构交流群</h3>
+            <p>探讨 OpenGPGPU 架构设计、指令集开发与开源协作。</p>
+            <img src="{{ url_for('static', filename='img/qr-opengpgpu.png') }}" alt="OpenGPGPU 架构交流群二维码" class="qr-code" data-qr-src="{{ url_for('static', filename='img/qr-opengpgpu.png') }}" onclick="openQrModal(this.getAttribute('data-qr-src'), 'OpenGPGPU 架构交流群二维码')" style="width: 150px; height: 150px; margin: 1rem 0; border-radius: 8px; cursor: pointer;">
+            <a href="javascript:void(0)" class="btn btn-outline" data-qr-src="{{ url_for('static', filename='img/qr-opengpgpu.png') }}" onclick="openQrModal(this.getAttribute('data-qr-src'), 'OpenGPGPU 架构交流群二维码')">扫码加入交流群</a>
+        </div>
+        
+        <div class="entry-card card">
+            <div class="icon-large">📧</div>
+            <h3>邮件联系</h3>
+            <p>如有合作意向或任何问题，欢迎通过邮件与我们联系。</p>
+            <a href="mailto:zhaopeng@xiaosinuanzhi.cn" class="btn btn-primary">发送邮件</a>
         </div>
     </div>
 </section>
+
+<!-- 二维码放大模态框 -->
+<div id="qrModal" class="qr-modal" onclick="if(event.target === this) closeQrModal()">
+    <span class="qr-modal-close" onclick="closeQrModal()">&times;</span>
+    <div class="qr-modal-content">
+        <img id="qrModalImg" src="" alt="">
+    </div>
+</div>
+
+<script>
+// 打开模态框：显示二维码大图
+function openQrModal(src, alt) {
+    var modal = document.getElementById('qrModal');
+    var modalImg = document.getElementById('qrModalImg');
+    if (modal && modalImg && src) {
+        modalImg.src = src;
+        modalImg.alt = alt || '二维码';
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// 关闭模态框
+function closeQrModal() {
+    var modal = document.getElementById('qrModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+// ESC 键关闭
+document.addEventListener('keydown', function(e) {
+    var modal = document.getElementById('qrModal');
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+        closeQrModal();
+    }
+});
+</script>
 {% endblock %}
